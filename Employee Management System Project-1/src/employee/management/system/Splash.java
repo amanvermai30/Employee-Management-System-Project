@@ -3,8 +3,10 @@ package employee.management.system;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Splash extends JFrame {
+public class Splash extends JFrame implements ActionListener {
 
     Splash(){
 
@@ -29,6 +31,7 @@ public class Splash extends JFrame {
         clickButton.setBounds(450,200,200,50);
         clickButton.setBackground(Color.BLUE);
         clickButton.setForeground(Color.WHITE);
+        clickButton.addActionListener(this);
 
         Border black = BorderFactory.createLineBorder(Color.CYAN);
         clickButton.setBorder(black);
@@ -60,5 +63,12 @@ public class Splash extends JFrame {
     public static void main(String[] args) {
 
         new Splash();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      setVisible(false);
+      new LoginPage();
+
     }
 }
