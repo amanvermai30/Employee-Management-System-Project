@@ -68,6 +68,7 @@ public class LoginPage extends JFrame implements ActionListener {
             ResultSet resultSet = con.s.executeQuery(query);
             if(resultSet.next()){
                  setVisible(false);
+                 new HomePage();
             } else {
                 JOptionPane.showMessageDialog(null,"Invalid Username and Password");
                 setVisible(false);
