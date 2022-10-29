@@ -2,9 +2,13 @@ package employee.management.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
-public class LoginPage extends JFrame {
+public class LoginPage extends JFrame implements ActionListener {
 
+    JTextField textFieldUser, textFieldPassWord;
     LoginPage(){
 
         getContentPane().setBackground(Color.WHITE);
@@ -14,7 +18,7 @@ public class LoginPage extends JFrame {
         username.setBounds(40,20,100,30);
         add(username);
 
-        JTextField textFieldUser = new JTextField();
+        textFieldUser = new JTextField();
         textFieldUser.setBounds(150,20,150,30);
         add(textFieldUser);
 
@@ -22,7 +26,7 @@ public class LoginPage extends JFrame {
         passWord.setBounds(40,60,100,30);
         add(passWord);
 
-        JTextField textFieldPassWord = new JTextField();
+        textFieldPassWord = new JTextField();
         textFieldPassWord.setBounds(150,60,150,30);
         add(textFieldPassWord);
 
@@ -31,6 +35,7 @@ public class LoginPage extends JFrame {
         loginButton.setBackground(Color.BLUE);
         loginButton.setForeground(Color.WHITE);
         add(loginButton);
+        loginButton.addActionListener(this);
 
         ImageIcon loginImg = new ImageIcon(ClassLoader.getSystemResource("Photos/login.png"));
         Image i1 = loginImg.getImage().getScaledInstance(250,150,Image.SCALE_DEFAULT);
@@ -47,5 +52,31 @@ public class LoginPage extends JFrame {
     public static void main(String[] args) {
 
         new LoginPage();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        try {
+            String userName = textFieldUser.getText();
+            String password = textFieldPassWord.getText();
+
+            String query = "select * from login where username = '"+userName+"' and password = '"+password+"' ";
+            MysqlConnectivity con = new MysqlConnectivity();
+
+
+            ResultSet resultSet = con.s.executeQuery(query);
+            if(resultSet.next()){
+                 setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null,"Invalid Username and Password");
+                setVisible(false);
+            }
+
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
     }
 }
