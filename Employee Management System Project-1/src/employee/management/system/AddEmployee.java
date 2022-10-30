@@ -19,7 +19,7 @@ public class AddEmployee extends JFrame implements ActionListener {
     JComboBox cbEducation;
     JLabel empIDNumber;
 
-    JButton backButton,addButton;
+    JButton addButton,backButton;
     AddEmployee(){
 
         getContentPane().setBackground(Color.WHITE);
@@ -139,6 +139,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         addButton.setFont(new Font("Tahoma",Font.PLAIN,17));
         addButton.setForeground(Color.white);
         addButton.setBackground(Color.BLUE);
+        addButton.addActionListener(this);
         add(addButton);
 
         backButton = new JButton("Back");
@@ -146,6 +147,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         backButton.setFont(new Font("Tahoma",Font.PLAIN,17));
         backButton.setForeground(Color.white);
         backButton.setBackground(Color.BLUE);
+        backButton.addActionListener(this);
         add(backButton);
 
         setSize(900,650);
@@ -176,6 +178,22 @@ public class AddEmployee extends JFrame implements ActionListener {
             String designation = designationField.getText();
             String aadhar = AadharField.getText();
             String empId = empIDNumber.getText();
+
+            try {
+
+                MysqlConnectivity con = new MysqlConnectivity();
+                String query = "insert into employee values('"+name+"','"+fatherName+"','"+dob+"','"+salary+"'," +
+                        "'"+address+"','"+phone+"','"+email+"','"+education+"','"+designation+"'," +
+                        "'"+aadhar+"','"+empId+"')";
+
+                con.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null,"Details Added Successfully");
+                setVisible(false);
+                new HomePage();
+
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
 
         } else {
             setVisible(false);

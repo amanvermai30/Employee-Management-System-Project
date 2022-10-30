@@ -29,7 +29,7 @@ public class HomePage extends JFrame implements ActionListener {
         addButton.addActionListener(this);
         img.add(addButton);
 
-        viewButton = new JButton("View Employee");
+        viewButton = new JButton("View Employees");
         viewButton.setBounds(340,100,150,40);
         viewButton.setFont(new Font("Tahoma",Font.BOLD,10));
         viewButton.addActionListener(this);
@@ -64,6 +64,8 @@ public class HomePage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == addButton ){
+            setVisible(false);
+            new AddEmployee();
             
         } else if (e.getSource() == viewButton) {
             
