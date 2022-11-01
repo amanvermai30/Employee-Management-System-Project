@@ -72,6 +72,8 @@ public class HomePage extends JFrame implements ActionListener {
             new ViewEmployees();
             
         } else if (e.getSource() == updateButton) {
+            setVisible(false);
+            new ViewEmployees();
             
         } else {
             

@@ -117,6 +117,8 @@ public class ViewEmployees extends JFrame implements ActionListener {
             }
 
         } else if (e.getSource() == updateBtn) {
+            setVisible(false);
+            new UpdateEmployee( chEmployeeId.getSelectedItem() );
 
         } else {
             setVisible(false);
