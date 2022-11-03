@@ -76,7 +76,7 @@ public class HomePage extends JFrame implements ActionListener {
             new ViewEmployees();
             
         } else {
-            
+            new RemoveEmployee();
         }
     }
 }
