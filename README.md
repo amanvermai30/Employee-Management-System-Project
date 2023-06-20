@@ -7,7 +7,7 @@ This is my first Java Project , it's very simple employee management system wher
 ![landing page](https://user-images.githubusercontent.com/105967008/222145588-faabe481-5664-4532-9b81-20b95a9c00a9.png)
 
 
-## ADD EMPLOYEE PAGE
+## EMPLOYEE PAGE
 
 ![add_employee page](https://user-images.githubusercontent.com/105967008/222145710-0bafb522-9745-4732-adce-a02be457cf16.png)
 
